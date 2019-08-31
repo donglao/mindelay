@@ -11,7 +11,7 @@ Is there any method that can balance the delay and accuracy? Well, you can read 
 ## Play with the demo
 
 ### Setting up the demo
-Well, the proposed framework should work with any object detector that operates on single frames (and I am too lazy to write my own detector). So we used [MMdetection](https://github.com/open-mmlab/mmdetection) in our experiments. Shout out to the authors!
+Well, the proposed framework should work with any object detector that operates on single frames (and I am too lazy to write my own detector). I just grabbed [MMdetection](https://github.com/open-mmlab/mmdetection) in our experiments since it is simple to use. Shout out to the authors!
 
 After installing MMdetection, you can play with this demo. I used the Faster R-CNN with ResNet 101 in this demo. You may download the model [here](https://s3.ap-northeast-2.amazonaws.com/open-mmlab/mmdetection/models/faster_rcnn_r101_fpn_1x_20181129-d1468807.pth). The model was trained on Coco, and seems that it works well on KITTI.
 
@@ -25,7 +25,7 @@ After running the [detection.py](./detection.py) the results should be saved aut
 ![demo image](./Resnet101_Faster_RCNN.jpg)
 
 ### Something really need to be taken care off
-In the paper we assume the detectors output some sort of probability (the details are in the paper), and the derivation is based on that. However, different detectors behave totally differently. Some are smoother while others may output some extreme results (like either 0 or 0.99... If you are working on detectors you must know what I am saying!). So you may want to (or you have to) tune the priors carefully. After that, remember to choose the right range of the threshold in the evaluaton code to make the scatter plot look nice. I will leave some comments in the code.
+In the paper we assume the detectors output some sort of probability (the details are in the paper), and the derivation is based on that. However, different detectors behave totally differently. Some are smoother while others may output some extreme results (like either 0 or 0.99... If you are working on detectors you must know what I am saying!). So you may want to (or you have to) tune the priors carefully. After that, remember to choose the right range of the threshold in the evaluaton code to make the scatter plot look nice. I have put some comments in the code.
 
 ### Some extra comments
 Remember that the result you get from the code is NOT the final result for the video. Let me explain why:
