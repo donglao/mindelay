@@ -25,7 +25,7 @@ After running the [detection.py](./detection.py) the results should be saved aut
 ![demo image](./Resnet101_Faster_RCNN.jpg)
 
 ### Something really need to be taken care off
-In the paper we assume the detectors output some sort of probability (the details are in the paper), and the derivation is based on that. However, different detectors behave totally differently. Some are smoother while others may output some extreme results (like either 0 or 0.99... If you are working on detectors you must know what I am saying!). So you may want to (or you have to) tune the priors. I will leave some comments in the code.
+In the paper we assume the detectors output some sort of probability (the details are in the paper), and the derivation is based on that. However, different detectors behave totally differently. Some are smoother while others may output some extreme results (like either 0 or 0.99... If you are working on detectors you must know what I am saying!). So you may want to (or you have to) tune the priors carefully. After that, remember to choose the right range of the threshold in the evaluaton code to make the scatter plot look nice. I will leave some comments in the code.
 
 ### Some extra comments
 Remeber that the result you get from the code is NOT the final result for the video. Let me explain why:
