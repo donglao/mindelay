@@ -27,7 +27,7 @@ for i = 1:length(result)% i: time; j: object
         bad{i}(j) = 0;
         check = (max(result{i}(j,6:m))>threshold);
         if check == 1
-            temp = detected{i}(j); % temp indicates whether the object is already detected in the previous frame
+            temp = detected{i}(j); % temp indicates whether the object was already detected in the previous frame
             detected{i}(j) = 1;
             bad{i}(j) = 1;
             for k = 1:length(tracklets{i})
@@ -37,7 +37,7 @@ for i = 1:length(result)% i: time; j: object
                         valid{i}(j) = valid{i}(j)+(overlapping>=IoU_lim);
                     end
                     bad{i}(j) = bad{i}(j) - (overlapping>=IoU_lim);
-                    if overlapping >= IoU_lim
+                    if overlapping >= IoU_lim && temp == 0
                         get(tracklets{i}(k).id,1) = 1;
                         if get(tracklets{i}(k).id,2)==0
                             get(tracklets{i}(k).id,2) = i;
