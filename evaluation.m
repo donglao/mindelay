@@ -16,6 +16,9 @@ for seq_idx = 0:20
     parfor step = 1:99 % for faster evaluation, use parallel
 %         disp(step)
         threshold = 1.5+step*0.2; % vary the threshold according to generate scatter plot
+% Note that each step takes care of one point in the scatter plot. 
+% The scatter plot will only be reasonable if you have chosen the right range of the threshold.
+
         [num_det(step), num_fa(step), delay_avg(step), delay_detected(step), IoU_sum(step)] = ...
             evaluate_result(result, tracklets, changetime, threshold, IoU_lim, num_obj,distime);
         delay_sum(step) = delay_avg(step)*double(num_obj);
