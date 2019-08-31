@@ -2,7 +2,7 @@
 
 A demo for the ICCV 2019 paper.
 
-## A Brief Introduction
+## A brief introduction
 
 For almost every single computer vision task, if the result from a single frame is not reliable, we can always wait for another frame, get another result, combine the results from both frames, and hopefully, and for most of the time, get better accuracy / reliability. Simple logic. However, waiting for another frame ==> longer delay. For example, long delay can never be tolerated by self-driving vehicles. We do not want to be killed just because the obstacle detection algorithm is 'waiting for another frame'. On the other hand, the vehicle can achieve absolute zero delay by outputing some nonsense and decalre a obstacle in every single frame. Then the vehicle will never be able to move...
 
@@ -13,14 +13,14 @@ Is there any method that can balance the delay and accuracy? Well, you can read 
 ### Setting up the demo
 Well, the proposed framework should work with any object detector that operates on single frames (and I am too lazy to write my own detector). So we used [MMdetection](https://github.com/open-mmlab/mmdetection) in our experiments. Shout out to the authors!
 
-After installing MMdetection, you can play with this demo. I used the Faster R-CNN with ResNet 101 in this demo. You may download the model [here](https://s3.ap-northeast-2.amazonaws.com/open-mmlab/mmdetection/models/faster_rcnn_r101_fpn_1x_20181129-d1468807.pth). The model was trained on Coco, and it seems that it works well on KITTI.
+After installing MMdetection, you can play with this demo. I used the Faster R-CNN with ResNet 101 in this demo. You may download the model [here](https://s3.ap-northeast-2.amazonaws.com/open-mmlab/mmdetection/models/faster_rcnn_r101_fpn_1x_20181129-d1468807.pth). The model was trained on Coco, and seems that it works well on KITTI.
 
 The experiments were done on [KITTI Tracking dataset](http://www.cvlibs.net/datasets/kitti/eval_tracking.php). 
 
 Set up the dirs. Turn off nms and set how many bounding boxes you want to get in each frame. Run the detector. Do the CUSUM update. And hope everything works... Actually you can skip these steps by using the configuration file I uploaded and run the [detection.py](./detection.py) directly. All the experiments in the paper were done in Matlab. But I decided to move it to Python so we can skip some painful data saving & loading. Hopefully it works out!  
 
 ### Evaluation
-After running the [detection.py](./detection.py) the results should be saved automatically... To evaluate the result, simply run the [evaluation.m](./evaluation.m). What I got is this curve:
+After running the [detection.py](./detection.py) the results should be saved automatically. To evaluate the result, simply run the [evaluation.m](./evaluation.m). What I got was this curve:
 
 ![demo image](./Resnet101_Faster_RCNN.jpg)
 
