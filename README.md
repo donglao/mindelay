@@ -33,7 +33,7 @@ Remeber that the result you get from the code is NOT the final result for the vi
 In practice, if you want to implement the minimum delay framework, the logic should be:
 Get the raw detection result ==> compute the CUSUM statistic according to our paper ==》thresholding ==> declare a detection. Once a detection is declared, you may do tracking or whatever you want according to your specific task. 
 
-However, every single time we change the threshold, we will need to go through this pipeline again. It will take decades to make the scatter plots above. So instead, we just let the CUSUM statistic accumulate and never stop it. During evaluation, each time we threshold it, we will get a collection of FIRST DECLARED DETECTIONS. Then we can make the plots. So remeber, these are not the final result as we do not take care of the tracking or whatever after any detection is declared.
+However, every single time we change the threshold, we will need to go through this pipeline again. It will take decades to make the scatter plots above. So instead, we just let the CUSUM statistic accumulate and never stop it. During evaluation, each time we threshold it, we will get a collection of FIRST DECLARED DETECTIONS. Then we can make the plot. So remeber, these are not the final results as we do not take care of the tracking or whatever after any detection is declared.
 
 ### Cite me!
 
