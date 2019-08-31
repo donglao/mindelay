@@ -27,6 +27,16 @@ After running the [detection.py](./detection.py) the results should be saved aut
 ### Something really need to be taken care off
 In the paper we assume the detectors output some sort of probability (the details are in the paper), and the derivation is based on that. However, different detectors behave totally differently. Some are smoother while others may output some extreme results (like either 0 or 0.99... If you are working on detectors you must know what I am saying!). So you may want to (or you have to) tune the priors. I will leave some comments in the code.
 
+### Some extra comments
+Remeber that the result you get from the code is NOT the final result for the video. Let me explain why:
+
+In practice, if you want to implement the minimum delay framework, the logic should be:
+Get the raw detection result ==> compute the CUSUM statistic according to our paper ==》thresholding ==> declare a detection. Once a detection is declared, you may do tracking or whatever you want according to your specific task. 
+
+However, every single time we change the threshold, we will need to go through this pipeline again. It will take decades to make the scatter plots above. So instead, we just let the CUSUM statistic accumulate and never stop it. During evaluation, each time we threshold it, we will get a collection of FIRST DECLARED DETECTIONS. Then we can make the plots. So remeber, these are not the final result as we do not take care of the tracking or whatever after any detection is declared.
+
+### Cite me!
+
 If you are working on single frame object detectors, and want to play with this minimum delay framework, go ahead! Theoretically if the detector behaves smoother, more consistant and robust, the min-delay framework should work better. You get an extra experiment in the paper and I get an extra citation! Win-Win!
 
 To cite our paper, 
