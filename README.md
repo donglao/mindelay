@@ -17,10 +17,10 @@ After installing MMdetection, you can play with this demo. I used the Faster R-C
 
 The experiments were done on [KITTI Tracking dataset](http://www.cvlibs.net/datasets/kitti/eval_tracking.php). 
 
-Set up the dirs. Turn off nms and set how many bounding boxes you want to get in each frame. Run the detector. Do the CUSUM update. And hope everything works... Actually you can skip these steps by using the configuration file I uploaded and run the [detection.py](./detection.py) directly. All the experiments in the paper were done in Matlab. But I decided to move it to Python so we can skip some painful data saving & loading. Hopefully it works out!  
+Set up the dirs. Turn off nms and set how many bounding boxes you want to get in each frame. Run the detector. Do the CUSUM update. And hope everything works... Actually you can skip these steps by using the [configuration file](./ 	faster_rcnn_r101_fpn_1x.py) I uploaded and run the [detection.py](./detection.py) directly. All the experiments in the paper were done in Matlab. But I decided to move it to Python so we can skip some painful data saving & loading. Hopefully it works out!  
 
 ### Evaluation
-After running the [detection.py](./detection.py) the results should be saved automatically. To evaluate the result, simply run the [evaluation.m](./evaluation.m). You might need to compile the mex file for nms. What I got was this curve:
+After running the [detection.py](./detection.py) the results should be saved automatically. To evaluate the result, simply run the [evaluation.m](./evaluation.m). You might need to compile the [mex file for nms](./Evaluation_toolbox/nms_mex.cpp). What I got was this curve:
 
 ![demo image](./Resnet101_Faster_RCNN.jpg)
 
@@ -28,12 +28,12 @@ After running the [detection.py](./detection.py) the results should be saved aut
 In the paper we assume the detectors output some sort of probability (the details are in the paper), and the derivation is based on that. However, different detectors behave totally differently. Some are smoother while others may output some extreme results (like either 0 or 0.99... If you are working on detectors you must know what I am saying!). So you may want to (or you have to) tune the priors carefully. After that, remember to choose the right range of the threshold in the evaluaton code to make the scatter plot look nice. I will leave some comments in the code.
 
 ### Some extra comments
-Remeber that the result you get from the code is NOT the final result for the video. Let me explain why:
+Remember that the result you get from the code is NOT the final result for the video. Let me explain why:
 
 In practice, if you want to implement the minimum delay framework, the logic should be:
 Get the raw detection result ==> compute the CUSUM statistic according to our paper ==》thresholding ==> declare a detection. Once a detection is declared, you may do tracking or whatever you want according to your specific task. 
 
-However, every single time we change the threshold, we will need to go through this pipeline again. It will take decades to make the scatter plots above. So instead, we just let the CUSUM statistic accumulate and never stop it. During evaluation, each time we threshold it, we will get a collection of FIRST DECLARED DETECTIONS. Then we can make the plot. So remeber, these are not the final results as we do not take care of the tracking or whatever after any detection is declared.
+However, every single time we change the threshold, we will need to go through this pipeline again. It will take decades to make the scatter plots above. So instead, we just let the CUSUM statistic accumulate and never stop it. During evaluation, each time we threshold it, we will get a collection of FIRST DECLARED DETECTIONS. Then we can make the plot. So remember, these are not the final results as we do not take care of tracking or whatever after any detection is declared.
 
 ### Cite me!
 
