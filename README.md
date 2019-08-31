@@ -30,7 +30,7 @@ If you are working on single frame object detectors, and want to play with this 
 To cite our paper, 
 
 ```
-@article{mmdetection,
+@article{min_delay,
   title   = {Minimum Delay Object Detection From Video},
   author  = {Lao, Dong and Sundaramoorthi, Ganesh},
   journal= {arXiv preprint arXiv:1908.11092},
