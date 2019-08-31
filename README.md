@@ -37,7 +37,9 @@ However, every single time we change the threshold, we will need to go through t
 
 ### Cite me!
 
-If you are working on single frame object detectors, and want to play with this minimum delay framework, go ahead! Theoretically if the detector behaves smoother, more consistant and robust, the min-delay framework should work better. You get an extra experiment in the paper and I get an extra citation! Win-Win!
+If you are working on single frame object detectors, and want to play with this minimum delay framework, go ahead! My intuition is that if the detector behaves smoother, more consistant and robust, the min-delay framework should work better (not confirmed yet... If you have any interesting result please let me know!). 
+
+Or you can simply test your single frame algorithm under the minimum delay setting using our evaluation code! You get an extra experiment in the paper and I get an extra citation! Win-Win!
 
 To cite our paper, 
 
