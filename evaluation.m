@@ -15,7 +15,7 @@ for seq_idx = 0:20
 %     for step = 1:99
     parfor step = 1:99 % for faster evaluation, use parallel
 %         disp(step)
-        threshold = 1.5+step*0.2; % vary the threshold according to generate scatter plot
+        threshold = 1.5+step*0.2; % vary the threshold to generate scatter plot
 % Note that each step takes care of one point in the scatter plot. 
 % The scatter plot will only be reasonable if you have chosen the right range of the threshold.
 
