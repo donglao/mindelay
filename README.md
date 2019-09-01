@@ -17,7 +17,7 @@ After installing MMdetection, you can play with this demo. I used the Faster R-C
 
 The experiments were done on [KITTI Tracking dataset](http://www.cvlibs.net/datasets/kitti/eval_tracking.php). 
 
-Set up the dirs. Turn off nms and set how many bounding boxes you want to get in each frame. Run the detector. Do the CUSUM update. And hope everything works... Actually you can skip these steps by using the [configuration file](./ 	faster_rcnn_r101_fpn_1x.py) I uploaded and run the [detection.py](./detection.py) directly. All the experiments in the paper were done in Matlab. But I decided to move it to Python so we can skip some painful data saving & loading. Hopefully it works out!  
+Set up the dirs. Turn off nms and set how many bounding boxes you want to get in each frame. Run the detector. Do the CUSUM update. And hope everything works... Actually you can skip these steps by using the [configuration file](./faster_rcnn_r101_fpn_1x.py) I uploaded and run the [detection.py](./detection.py) directly. All the experiments in the paper were done in Matlab. But I decided to move it to Python so we can skip some painful data saving & loading. Hopefully it works out!  
 
 ### Evaluation
 After running the [detection.py](./detection.py) the results should be saved automatically. To evaluate the result, simply run the [evaluation.m](./evaluation.m). You might need to compile the [mex file for nms](./Evaluation_toolbox/nms_mex.cpp). What I got was this curve:
