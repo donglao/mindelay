@@ -11,7 +11,7 @@ Is there any method that can balance the delay and accuracy? Well, you can read 
 ## Play with the demo
 
 ### Setting up the demo
-Well, the proposed framework should work with any object detector that operates on single frames (and I am too lazy to write my own detector). I just grabbed [MMdetection](https://github.com/open-mmlab/mmdetection) in our experiments since it is simple to use. Shout out to the authors!
+Well, the proposed framework should work with any object detector that operates on single frames (and I am too lazy to write my own detector). I just grabbed [MMdetection](https://github.com/open-mmlab/mmdetection)(V0.6.0!) in our experiments since it is simple to use. Shout out to the authors!
 
 After installing MMdetection, you can play with this demo. I used the Faster R-CNN with ResNet 101 in this demo. You may download the model [here](https://s3.ap-northeast-2.amazonaws.com/open-mmlab/mmdetection/models/faster_rcnn_r101_fpn_1x_20181129-d1468807.pth). The model was trained on Coco, and seems that it works well on KITTI.
 
